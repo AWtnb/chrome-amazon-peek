@@ -1,6 +1,6 @@
 'use strict';
 
-const CLASS_NAME = 'peek-link';
+const CLASS_NAME = 'peek-button';
 
 class ResultImage {
   private readonly base: string;

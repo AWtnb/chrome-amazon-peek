@@ -18,7 +18,7 @@ const requestToContentScript = (payload: string) => {
       },
       () => {
         if (chrome.runtime.lastError) {
-          console.log("something happened: ", chrome.runtime.lastError.message);
+          console.log("something wrong happened: ", chrome.runtime.lastError.message);
         }
       }
     );
