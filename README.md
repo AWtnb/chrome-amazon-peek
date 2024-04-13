@@ -1,19 +1,9 @@
-# <img src="public/icons/icon_48.png" width="45" align="left"> Chrome Amazon Peek
+# Amazon-Peek / Amazonサムネイル原寸画像
 
-My Chrome Extension
 
-## Features
+Directly open full-size images of thumbnails of Amazon search results.
 
-- Feature 1
-- Feature 2
-
-## Install
-
-[**Chrome** extension]() <!-- TODO: Add chrome extension link inside parenthesis -->
-
-## Contribution
-
-Suggestions and pull requests are welcomed!.
+Amazon検索結果のサムネイルの原寸画像を直接開きます。
 
 ---
 

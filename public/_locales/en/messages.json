@@ -1,0 +1,8 @@
+{
+  "ext_name": {
+    "message": "Amazon-Peek"
+  },
+  "manifest_description": {
+    "message": "Directly open full-size images of thumbnails of Amazon search results."
+  }
+}

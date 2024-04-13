@@ -1,8 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Amazon Peek",
+  "name": "__MSG_ext_name__",
   "version": "0.1.0",
-  "description": "Peek fullsize Amazon search result thumbnail item",
+  "author": "awtnb",
+  "description": "__MSG_manifest_description__",
+  "default_locale": "ja",
+  "homepage_url": "https://github.com/AWtnb/chrome-address-amazon-peek",
   "icons": {
     "16": "icons/icon_16.png",
     "32": "icons/icon_32.png",
@@ -15,7 +18,7 @@
   "action": {
     "default_title": "Chrome Amazon Peek"
   },
-  "permissions": ["activeTab", "tabs"],
+  "permissions": ["tabs"],
   "content_scripts": [
     {
       "matches": ["https://www.amazon.co.jp/*", "https://www.amazon.com/*"],
