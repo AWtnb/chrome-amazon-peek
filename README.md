@@ -1,9 +1,10 @@
 # Amazon-Peek / Amazonサムネイル原寸画像
 
+![demo](./images/demo.png)
 
-Directly open full-size images of thumbnails of Amazon search results.
+Directly open full-size images of thumbnails on Amazon search results.
 
-Amazon検索結果のサムネイルの原寸画像を直接開きます。
+Amazon検索結果からサムネイルの原寸画像を直接開きます。
 
 ---
 
