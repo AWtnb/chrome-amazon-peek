@@ -1,21 +1,45 @@
 'use strict';
 
-// With background scripts you can communicate with popup
-// and contentScript files.
-// For more information on background script,
-// See https://developer.chrome.com/extensions/background_pages
+const isTargetPage = (url: string): boolean => {
+  const targets = ['https://www.amazon.co.jp/s', 'https://www.amazon.com/s'];
+  return targets.some((t) => url.startsWith(t));
+};
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'GREETINGS') {
-    const message: string = `Hi ${
-      sender.tab ? 'Con' : 'Pop'
-    }, my name is Bac. I am from Background. It's great to hear from you.`;
+const requestToContentScript = (payload: string) => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    const tab = tabs[0];
+    if (!tab.id) {
+      return;
+    }
+    chrome.tabs.sendMessage(
+      tab.id,
+      {
+        payload: payload,
+      },
+      () => {
+        if (chrome.runtime.lastError) {
+          console.log("something happened: ", chrome.runtime.lastError.message);
+        }
+      }
+    );
+  });
+};
 
-    // Log message coming from the `request` parameter
-    console.log(request.payload.message);
-    // Send a response message
-    sendResponse({
-      message,
-    });
-  }
+chrome.tabs.onActivated.addListener((activeInfo: chrome.tabs.TabActiveInfo) => {
+  chrome.tabs.get(activeInfo.tabId, (tab: chrome.tabs.Tab) => {
+    if (tab.url && isTargetPage(tab.url)) {
+      requestToContentScript('call-content-script');
+    }
+  });
 });
+
+chrome.tabs.onUpdated.addListener(
+  (_: number, change: chrome.tabs.TabChangeInfo, tab: chrome.tabs.Tab) => {
+    if (!tab.active || !change.url || !tab.url) {
+      return;
+    }
+    if (isTargetPage(tab.url)) {
+      requestToContentScript('call-content-script');
+    }
+  }
+);
