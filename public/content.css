@@ -5,4 +5,9 @@
   background: #f7f7f7;
   font-size: 18px;
   text-align: end;
+  border-right: 3px solid #f7f7f7;
+}
+
+.peek-button:hover {
+  border-right: 3px solid tomato;
 }

@@ -14,7 +14,7 @@ class ResultImage {
     return this.base + '._SL1500_.' + this.ext;
   }
 
-  makeLink(): HTMLElement {
+  makeButton(): HTMLElement {
     const d = document.createElement('div');
     d.classList.add('peek-container');
     const b = document.createElement('button');
@@ -41,29 +41,20 @@ const addPeeker = () => {
         return;
       }
       const res = new ResultImage(src);
-      elem.before(res.makeLink());
+      elem.before(res.makeButton());
     });
 };
 
-window.addEventListener('load', addPeeker);
 window.addEventListener('load', () => {
-  const observer = new MutationObserver(() => {
-    addPeeker();
-  });
-
   const result = document.getElementById('search');
   if (!result) {
     return;
   }
+
+  const observer = new MutationObserver(addPeeker);
+
   observer.observe(result, {
     childList: true,
     subtree: true,
   });
-});
-
-chrome.runtime.onMessage.addListener((request) => {
-  if (request.payload === 'call-content-script') {
-    addPeeker();
-  }
-  return true;
 });

@@ -5,7 +5,7 @@
   "author": "awtnb",
   "description": "__MSG_manifest_description__",
   "default_locale": "ja",
-  "homepage_url": "https://github.com/AWtnb/chrome-address-amazon-peek",
+  "homepage_url": "https://github.com/AWtnb/chrome-amazon-peek",
   "icons": {
     "16": "icons/icon_16.png",
     "32": "icons/icon_32.png",
@@ -13,15 +13,17 @@
     "128": "icons/icon_128.png"
   },
   "background": {
-    "service_worker": "background.js"
   },
   "action": {
     "default_title": "Chrome Amazon Peek"
   },
-  "permissions": ["tabs"],
+  "permissions": [],
   "content_scripts": [
     {
-      "matches": ["https://www.amazon.co.jp/*", "https://www.amazon.com/*"],
+      "matches": [
+        "https://www.amazon.co.jp/*",
+        "https://www.amazon.com/*"
+      ],
       "run_at": "document_idle",
       "js": ["contentScript.js"],
       "css": ["content.css"]
