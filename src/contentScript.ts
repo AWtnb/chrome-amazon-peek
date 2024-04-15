@@ -11,7 +11,7 @@ class ResultImage {
   }
 
   private getFullImgSrc(): string {
-    return this.base + '._SL1500_.' + this.ext;
+    return this.base + '.' + this.ext;
   }
 
   makeButton(): HTMLElement {
@@ -50,6 +50,8 @@ window.addEventListener('load', () => {
   if (!result) {
     return;
   }
+
+  addPeeker();
 
   const observer = new MutationObserver(addPeeker);
 
